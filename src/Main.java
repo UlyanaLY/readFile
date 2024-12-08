@@ -1,6 +1,8 @@
 import java.io.*;
 import java.util.Set;
 
+import static java.lang.Character.isUpperCase;
+
 public class Main {
     public static void main(String[] args) {
         var inputFilePath = "resources/text.txt";
@@ -21,13 +23,20 @@ public class Main {
             int character;
             while ((character = reader.read()) != -1) {
                 var currentChar = (char) character;
-
                 if (vowels.contains(currentChar)) {
                     vowelsAmount++;
-                    writer.write('а');
+                    if (isUpperCase(currentChar)) {
+                        writer.write('A');
+                    } else {
+                        writer.write('a');
+                    }
                 } else if (Character.isLetter(currentChar)) {
                     consonantsAmount++;
-                    writer.write('м');
+                    if (isUpperCase(currentChar)) {
+                        writer.write('М');
+                    } else {
+                        writer.write('м');
+                    }
                 } else {
                     writer.write(currentChar);
                 }
